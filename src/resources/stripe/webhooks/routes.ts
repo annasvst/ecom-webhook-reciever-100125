@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import webhooksController from './controller';
-import { raw } from 'express';
+import express from 'express';
 
 const router = Router();
 
-router.route('/').post(raw({ type: 'application/json' }), webhooksController.receiveUpdates);
+router.route('/').post(express.raw({ type: 'application/json' }), webhooksController.receiveUpdates);
 
 export default router;
