@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import routes from './common/routes';
 import unknownEndpoint from './middlewares/unknownEndpoint';
+import webhooksController from './resources/stripe/webhooks/controller';
 
 import './common/env';
 
@@ -20,7 +21,10 @@ app.use(
     limit: process.env.REQUEST_LIMIT || '100kb',
   }),
 );
-// app.use(express.json());
+
+// See Github Issue here: https://github.com/stripe/stripe-node/issues/341
+app.post('/v1/stripe/webhooks', express.raw({ type: 'application/json' }), webhooksController.receiveUpdates);
+app.use(express.json());
 
 // health check
 app.get('/', (req: Request, res: Response) => {
