@@ -9,6 +9,9 @@ const receiveUpdates = async (req: Request, res: Response) => {
     // Get the signature sent by Stripe
     const signature = req.headers['stripe-signature'];
     console.log('Signature header', signature);
+    console.log('req.body', req.body);
+    console.log('endpointSecret', endpointSecret);
+
     try {
       event = stripe.webhooks.constructEvent(req.body, signature, endpointSecret);
     } catch (err) {
