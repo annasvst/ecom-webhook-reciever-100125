@@ -20,7 +20,7 @@ app.use(
     limit: process.env.REQUEST_LIMIT || '100kb',
   }),
 );
-app.use(express.json());
+// app.use(express.json());
 
 // health check
 app.get('/', (req: Request, res: Response) => {
