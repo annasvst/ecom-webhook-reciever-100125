@@ -12,7 +12,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const create = async (req: Request, res: Response, next: NextFunction) => {
+const create = async (req: Request, res: Response) => {
   try {
     const result = userRequestSchema.safeParse(req.body);
 
@@ -36,5 +36,6 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 export default {
-  getAll,create
+  getAll,
+  create,
 };

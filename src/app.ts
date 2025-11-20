@@ -34,5 +34,3 @@ app.use('/v1/', routes);
 app.use('*', unknownEndpoint);
 
 export default app;
-
-
