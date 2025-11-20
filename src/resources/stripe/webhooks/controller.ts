@@ -1,8 +1,5 @@
 import { Request, Response } from 'express';
-import Stripe from 'stripe';
-
-const stripe = new Stripe(process.env.STRIPE_API_KEY);
-const endpointSecret = process.env.STRIPE_WEBHOOK_SIGNING_SECRET;
+import { endpointSecret, stripe } from '../../../services/stripe';
 
 const receiveUpdates = async (req: Request, res: Response) => {
   let event = req.body;

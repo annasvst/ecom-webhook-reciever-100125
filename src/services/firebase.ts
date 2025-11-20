@@ -1,5 +1,7 @@
 import admin from 'firebase-admin';
 
+import '../common/env';
+
 if (!admin.apps.length) {
   console.log('process.env.FIREBASE_SERVICE_ACCOUNT', !!process.env.FIREBASE_SERVICE_ACCOUNT);
   if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
